@@ -11,8 +11,7 @@ function createGallaryMarkup(gallery) {
   <img   
   class="gallery__image"
    src="${preview}"
-  alt="${description}" 
-  title="${description}"/>
+  alt="${description}" />
 </a>`;
     })
     .join("");
@@ -22,25 +21,8 @@ const Markup = createGallaryMarkup(galleryItems);
 
 gallery.insertAdjacentHTML("beforeend", Markup);
 
-gallery.addEventListener("click", onGalleryClick);
-
-function onGalleryClick(event) {
-  if (!event.target.nodeName === "IMG") {
-    return;
-  }
-
-  event.preventDefault();
-
-  const closeModal = (event) => {
-    const Escape = "Escape";
-
-    if (event.code === Escape) {
-      instance.close();
-    }
-  };
-}
-
 const lightbox = new SimpleLightbox(".gallery a", {
+  captionsData: "alt",
   captionDelay: 250,
 });
 
